@@ -1,0 +1,51 @@
+/* --------------------------------------------   */
+/* Habit Tracker table with rounded edges        */
+/* --------------------------------------------   */
+/* Habit Tracker table with rounded edges */
+.habitTracker table {
+    border-collapse: collapse;
+    border-radius: 10px;
+    font-size: 1em;
+    color: white;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.habitTracker thead {
+    background-color: #3d3b63; /* Set header background to match table background */
+}
+
+.habitTracker th {
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 1px #2b2a466b;
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle;
+   
+}
+
+.habitTracker td {
+    
+    color: white;
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.habitTracker td strong {
+    color: white;
+}
+
+.habitTracker td, .habitTracker th {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+}
+
+
+.habitTracker table {
+    overflow-x: auto;
+}
