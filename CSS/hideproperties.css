@@ -15,18 +15,6 @@
          transition: max-height 300ms ease-in-out, opacity 300ms;         
     }
 }
-
-
-.table-wide {
-    --container-table-width: 50%;
-    --container-dataview-table-width: 50%;
-    --container-table-max-width: 80%;
-    --container-table-margin: auto;
-    --table-edge-cell-padding-first: 16px;
-    --table-edge-cell-padding-last: 16px;
-    display: flex;
-    justify-content: center;
-  }
   
 /* Disable hover effect for tables in Minimal theme */
 .markdown-preview-view table td:hover,
