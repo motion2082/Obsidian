@@ -1,13 +1,12 @@
-These two lines work together to enable network tunneling capabilities within the LXC container. They allow the container to create and use virtual network interfaces, which is essential for running applications that require VPNs, tunnels, or other network virtualization features.
+## These two lines work together to enable network tunneling capabilities within the LXC container. They allow the container to create and use virtual network interfaces, which is essential for running applications that require VPNs, tunnels, or other network virtualization features. These steps are for Proxmox.
 
-
-1. Edit the Container Configuration: You can modify the configuration directly with script below
+## 1. Edit the Container Configuration: You can modify the configuration directly with script below
 
 nano /etc/pve/lxc/<container_id>.conf
 
-2. Add two lines and save conf file.
+## 2. Add two lines and save conf file.
 
 lxc.cgroup.devices.allow = c 10:200 rwm](<lxc.cgroup.devices.allow = c 10:200 rwm
 lxc.mount.entry = /dev/net/tun dev/net/tun none bind,create=file
 
-3. Restart Container
+## 3. Restart Container
