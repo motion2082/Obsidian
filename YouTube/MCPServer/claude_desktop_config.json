@@ -1,0 +1,16 @@
+{
+    "mcpServers": {
+        "mcp-obsidian": {
+          "command": "C:/Users/YOURUSERFOLDER/.local/bin/uv.exe",
+          "env": {
+        "OBSIDIAN_API_KEY": "YOURLOCALRESTAPIKEY"
+      },
+          "args": [
+            "--directory",
+            "D:/YourObsidianVaultLocaltion/mcp-obsidian",
+            "run",
+            "mcp-obsidian"
+          ]
+        }
+    }
+}
