@@ -2,7 +2,7 @@
 	"schemaVersion": "0.1.0",
 	"name": "Blinkist",
 	"behavior": "create",
-	"noteContentFormat": "{{content}}\n\n## AI Summary\n{{\"summarise the blinks on this page\"}}",
+	"noteContentFormat": "\n{{\"Given the Blinkist information. Analyze and generate the following:\\n## AI Summary\\n\\nBriefly summarise each blink.\\n\\n## Key Takeaways\\n\\nList the key takeaways in the blinks.\"}}\n\n\n## Original Blinks\n{{content}}\n\n\n\n\n\n",
 	"properties": [
 		{
 			"name": "Date-Created",
@@ -41,8 +41,8 @@
 		}
 	],
 	"triggers": [
-		"blinkist.com"
+		"https://www.blinkist.com/en/reader/books/"
 	],
 	"noteNameFormat": "{{title}}",
-	"path": "04 VAULT/Web Clippings"
+	"path": "04 VAULT/Blinkist"
 }
