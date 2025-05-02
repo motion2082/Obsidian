@@ -1,0 +1,79 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "YouTube",
+	"behavior": "create",
+	"noteContentFormat": "{{\"Given the YouTube video information and transcript. Analyze and generate the following:\\n## Summary\\n\\nBriefly summarise the video.\\n\\n## Key Takeaways\\n\\nList the key takeaways in the video.\"}}\n\n\n##### Media Extended\n- [{{title}}]({{schema:@VideoObject:embedUrl}})\n\n## Timestamps\n{{\"add timestamp notes here, make sure timestamps have links back to YouTube\"}}\n\n`BUTTON[play]`  `BUTTON[timestamp]`  `BUTTON[snap]`\n\n`BUTTON[bck10]` `BUTTON[fwd30]` \n\n```meta-bind-embed\n[[Metabind Extended Media Player Buttons]]\n```\n\n{{schema:@VideoObject:description|callout:(\"info\",\"Description\",true)}}\n\n> [!quote] Summary\n> {{\"Briefly summarise the video.\"}}\n\n---\n\n## Best Ideas\n{{\"list the best ideas from the video\"}}\n\n---\n\n## Tools\n{{\"list any tools from the video that could be applied in real life scenarios\"}}\n\n---\n## Reflection\n{{\"what are the key learning points of this video?\"}}\n\n---\n\n## Key Message\n{{\"what is the key message of this video?\"}}",
+	"properties": [
+		{
+			"name": "Date-Added",
+			"value": "{{date:\\\"YYYY-MM-DD\\\"}}",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "#Youtube, #Source/Youtube, #📽️",
+			"type": "multitext"
+		},
+		{
+			"name": "Status",
+			"value": "In Progress",
+			"type": "text"
+		},
+		{
+			"name": "Source",
+			"value": "YouTube, Source/YouTube",
+			"type": "text"
+		},
+		{
+			"name": "Creator",
+			"value": "{{schema:author|wikilink}}",
+			"type": "text"
+		},
+		{
+			"name": "Channel-Name",
+			"value": "{{schema:@VideoObject:author}}",
+			"type": "text"
+		},
+		{
+			"name": "Video-URL",
+			"value": "{{schema:@VideoObject:embedUrl|replace:\\\"embed/\\\":\\\"watch?v=\\\"}}",
+			"type": "text"
+		},
+		{
+			"name": "Related",
+			"value": "[[YouTube]]",
+			"type": "text"
+		},
+		{
+			"name": "Published",
+			"value": "{{schema:@VideoObject:uploadDate|date:\\\"YYYY-MM-DD\\\"}}",
+			"type": "text"
+		},
+		{
+			"name": "Duration",
+			"value": "{{schema:@VideoObject:duration|replace:\\\"PT\\\",\\\"\\\",\\\"S\\\",\\\"\\\"}}",
+			"type": "text"
+		},
+		{
+			"name": "Rating",
+			"value": "⭐⭐⭐⭐",
+			"type": "multitext"
+		},
+		{
+			"name": "Topics",
+			"value": "",
+			"type": "multitext"
+		},
+		{
+			"name": "aliases",
+			"value": "{{schema:@VideoObject:name}}",
+			"type": "text"
+		}
+	],
+	"triggers": [
+		"https://www.youtube.com/watch"
+	],
+	"noteNameFormat": "📽️{{schema:@VideoObject:name|safe_name|trim}} - {{schema:@VideoObject:author}}",
+	"path": "04 VAULT/Web Clippings",
+	"context": "# {{schema:@VideoObject:name}}\n\n{{schema:@VideoObject:description}}\n\n## Basic Information\n\n- Link: {{schema:@VideoObject:@id}}\n- Channel: {{schema:@VideoObject:author}}\n\n## Transcript\n\n{{selectorHtml:ytd-transcript-segment-renderer .segment-timestamp, ytd-transcript-segment-renderer yt-formatted-string|join:\"\\n\"|markdown}}"
+}

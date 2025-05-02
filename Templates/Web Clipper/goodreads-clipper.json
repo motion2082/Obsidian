@@ -1,0 +1,63 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "Goodreads",
+	"behavior": "create",
+	"noteContentFormat": "{{selector:.BookPageMetadataSection__description}}",
+	"properties": [
+		{
+			"name": "Author",
+			"value": "{{schema:author[*].name|wikilink|join}}",
+			"type": "text"
+		},
+		{
+			"name": "Genre",
+			"value": "{{selector:.BookPageMetadataSection__genres .BookPageMetadataSection__genreButton|wikilink}}",
+			"type": "multitext"
+		},
+		{
+			"name": "length",
+			"value": "{{schema:numberOfPages}}",
+			"type": "number"
+		},
+		{
+			"name": "Year",
+			"value": "{{selector:p[data-testid='publicationInfo']|split:\\\"First published \\\"|slice:1|date:\\\"YYYY\\\"}}",
+			"type": "number"
+		},
+		{
+			"name": "ScoreGr",
+			"value": "{{schema:aggregateRating.ratingValue}}",
+			"type": "number"
+		},
+		{
+			"name": "Rating",
+			"value": "",
+			"type": "multitext"
+		},
+		{
+			"name": "Cover",
+			"value": "{{schema:image}}",
+			"type": "text"
+		},
+		{
+			"name": "isbn",
+			"value": "{{schema:isbn}}",
+			"type": "text"
+		},
+		{
+			"name": "Date-Created",
+			"value": "{{date:\\\"YYYY-MM-DD\\\"}}",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "Books",
+			"type": "multitext"
+		}
+	],
+	"triggers": [
+		"https://www.goodreads.com/book/"
+	],
+	"noteNameFormat": "{{selector:.BookPageTitleSection__title h1}}",
+	"path": "04 VAULT/Web Clippings"
+}

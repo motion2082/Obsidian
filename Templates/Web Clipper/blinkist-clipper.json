@@ -1,0 +1,48 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "Blinkist",
+	"behavior": "create",
+	"noteContentFormat": "{{content}}\n\n## AI Summary\n{{\"summarise the blinks on this page\"}}",
+	"properties": [
+		{
+			"name": "Date-Created",
+			"value": "{{date:\\\"YYYY-MM-DD\\\"}}",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "My/WebClippings, Source/Blinkist",
+			"type": "multitext"
+		},
+		{
+			"name": "Author",
+			"value": "{{author}}",
+			"type": "text"
+		},
+		{
+			"name": "Source",
+			"value": "{{url}}",
+			"type": "text"
+		},
+		{
+			"name": "Topic",
+			"value": "",
+			"type": "text"
+		},
+		{
+			"name": "Related",
+			"value": "",
+			"type": "text"
+		},
+		{
+			"name": "aliases",
+			"value": "{{title}}",
+			"type": "text"
+		}
+	],
+	"triggers": [
+		"blinkist.com"
+	],
+	"noteNameFormat": "{{title}}",
+	"path": "04 VAULT/Web Clippings"
+}
