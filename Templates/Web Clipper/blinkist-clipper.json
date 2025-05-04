@@ -16,7 +16,7 @@
 		},
 		{
 			"name": "Author",
-			"value": "{{author}}, {{schema:author[*].name|wikilink|join}}",
+			"value": "{{author}}",
 			"type": "text"
 		},
 		{
@@ -25,9 +25,9 @@
 			"type": "text"
 		},
 		{
-			"name": "Topic",
-			"value": "",
-			"type": "text"
+			"name": "Topics",
+			"value": "{{\\\"topics in this article, separated by commas\\\"}}",
+			"type": "multitext"
 		},
 		{
 			"name": "Related",

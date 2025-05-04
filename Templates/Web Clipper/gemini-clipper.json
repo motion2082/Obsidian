@@ -11,7 +11,7 @@
 		},
 		{
 			"name": "tags",
-			"value": "My/WebClippings, Source/AI/Gemini",
+			"value": "#My/WebClippings, #Source/AI/Gemini",
 			"type": "multitext"
 		},
 		{
@@ -20,14 +20,9 @@
 			"type": "multitext"
 		},
 		{
-			"name": "Obsidian-Web-Clipper",
-			"value": "true",
-			"type": "checkbox"
-		},
-		{
-			"name": "Topic",
+			"name": "Topics",
 			"value": "{{\\\"topics in this article, separated by commas\\\"}}",
-			"type": "text"
+			"type": "multitext"
 		}
 	],
 	"triggers": [

@@ -10,19 +10,25 @@
 			"type": "text"
 		},
 		{
-			"name": "Source",
-			"value": "{{url}}",
-			"type": "text"
+			"name": "tags",
+			"value": "#My/WebClippings, #Source/AI/Chats",
+			"type": "multitext"
 		},
 		{
-			"name": "tags",
-			"value": "My/WebClippings, Source/AI/ChatGPT",
+			"name": "URL",
+			"value": "{{url}}",
+			"type": "multitext"
+		},
+		{
+			"name": "Topics",
+			"value": "{{\\\"topics in this article, separated by commas\\\"}}",
 			"type": "multitext"
 		}
 	],
 	"triggers": [
 		"https://chatgpt.com/share",
-		"https://chatgpt.com/c"
+		"https://chatgpt.com/c",
+		"https://share.ultimateai.org/"
 	],
 	"noteNameFormat": "{{selector:title|safe_name}} - ChatGPT",
 	"path": "04 VAULT/AI Chat"

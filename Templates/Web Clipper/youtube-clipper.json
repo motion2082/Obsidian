@@ -61,7 +61,7 @@
 		},
 		{
 			"name": "Topics",
-			"value": "",
+			"value": "{{\\\"topics in this article, separated by commas\\\"}}",
 			"type": "multitext"
 		},
 		{

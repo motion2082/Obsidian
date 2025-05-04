@@ -15,9 +15,9 @@
 			"type": "multitext"
 		},
 		{
-			"name": "url",
+			"name": "URL",
 			"value": "{{url}}",
-			"type": "text"
+			"type": "multitext"
 		},
 		{
 			"name": "Author",

@@ -25,9 +25,9 @@
 			"type": "text"
 		},
 		{
-			"name": "Source-URL",
+			"name": "URL",
 			"value": "{{url}}",
-			"type": "text"
+			"type": "multitext"
 		},
 		{
 			"name": "Subreddit",

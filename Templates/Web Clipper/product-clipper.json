@@ -20,19 +20,19 @@
 			"type": "text"
 		},
 		{
-			"name": "description",
+			"name": "Description",
 			"value": "{{description}}",
 			"type": "text"
 		},
 		{
-			"name": "Source",
+			"name": "URL",
 			"value": "{{url}}",
-			"type": "text"
+			"type": "multitext"
 		},
 		{
 			"name": "Price",
 			"value": "{{meta:property:product:price:amount}}",
-			"type": "number"
+			"type": "text"
 		},
 		{
 			"name": "Image",

@@ -11,7 +11,7 @@
 		},
 		{
 			"name": "tags",
-			"value": "My/WebClippings",
+			"value": "#My/WebClippings",
 			"type": "multitext"
 		},
 		{
@@ -30,9 +30,9 @@
 			"type": "text"
 		},
 		{
-			"name": "Topic",
-			"value": "",
-			"type": "text"
+			"name": "Topics",
+			"value": "{{\\\"topics in this article, separated by commas\\\"}}",
+			"type": "multitext"
 		},
 		{
 			"name": "Related",
