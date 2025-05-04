@@ -5,14 +5,14 @@
 	"noteContentFormat": "\n#webclip/unread\n\n# {{title}}\n\n{{selectorHtml:#articlebody|remove_html:(\".dog_two,.note-b\")|markdown}}",
 	"properties": [
 		{
-			"name": "created",
-			"value": "{{time|date:\\\"YYYY-MM-DDTHH:mm:ssZ\\\"}}",
-			"type": "date"
+			"name": "Date-Created",
+			"value": "{{date}}",
+			"type": "text"
 		},
 		{
-			"name": "reviewed",
-			"value": "",
-			"type": "datetime"
+			"name": "tags",
+			"value": "#My/WebClippings, #Source/Article",
+			"type": "multitext"
 		},
 		{
 			"name": "url",
@@ -20,23 +20,13 @@
 			"type": "text"
 		},
 		{
-			"name": "title",
-			"value": "{{title}}",
+			"name": "Author",
+			"value": "{{selector:.post-body > div[itemprop=\\\"author\\\"] > meta[itemprop=\\\"name\\\"]?content|split:\\\",\\\"|join}}",
 			"type": "text"
 		},
 		{
-			"name": "author",
-			"value": "{{selector:.post-body > div[itemprop=\\\"author\\\"] > meta[itemprop=\\\"name\\\"]?content|split:\\\",\\\"|join}}",
-			"type": "multitext"
-		},
-		{
-			"name": "published",
+			"name": "Published",
 			"value": "{{selectorHtml:.post-body > meta[itemprop=\\\"datePublished\\\"]?content|date:\\\"YYYY-MM-DDTHH:mm:ssZ\\\"}}",
-			"type": "date"
-		},
-		{
-			"name": "description",
-			"value": "{{description}}",
 			"type": "text"
 		}
 	],

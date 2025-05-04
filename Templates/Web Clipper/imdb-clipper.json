@@ -11,28 +11,28 @@
 		},
 		{
 			"name": "tags",
-			"value": "movies, review, to-watch",
+			"value": "#My/WebClippings, #Source/Movies, #Movie/Review, #Movies/to-watch",
 			"type": "multitext"
 		},
 		{
-			"name": "category",
+			"name": "Category",
 			"value": "[[Movies]]",
-			"type": "multitext"
+			"type": "text"
 		},
 		{
-			"name": "genre",
+			"name": "Genre",
 			"value": "{{schema:genre|wikilink|join}}",
-			"type": "multitext"
+			"type": "text"
 		},
 		{
-			"name": "director",
+			"name": "Director",
 			"value": "{{schema:director[*].name|wikilink|join}}",
-			"type": "multitext"
+			"type": "text"
 		},
 		{
-			"name": "rating",
-			"value": "",
-			"type": "number"
+			"name": "Rating",
+			"value": "⭐⭐⭐⭐",
+			"type": "multitext"
 		},
 		{
 			"name": "scoreImdb",
@@ -40,24 +40,24 @@
 			"type": "number"
 		},
 		{
-			"name": "cast",
+			"name": "Cast",
 			"value": "{{schema:actor[*].name|slice:0,5|wikilink|join}}",
-			"type": "multitext"
+			"type": "text"
 		},
 		{
-			"name": "cover",
+			"name": "Cover",
 			"value": "{{schema:image}}",
 			"type": "text"
 		},
 		{
-			"name": "plot",
+			"name": "Plot",
 			"value": "{{schema:description}}",
 			"type": "text"
 		},
 		{
-			"name": "year",
+			"name": "Year",
 			"value": "{{schema:datePublished|split:\\\"-\\\"|slice:0,1}}",
-			"type": "number"
+			"type": "text"
 		}
 	],
 	"triggers": [

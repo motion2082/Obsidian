@@ -5,39 +5,34 @@
 	"noteContentFormat": "\n#podcast/backlog\n\n# {{schema:@PodcastEpisode:name}}\n\n{{schema:@PodcastEpisode:thumbnailUrl|image:\"thumbnail|200\"}}\n\n## Description\n\n{{schema:@PodcastEpisode:description}}\n\n## Notes\n\n",
 	"properties": [
 		{
-			"name": "created",
-			"value": "{{date:\\\"YYYY-MM-DD\\\"}}",
-			"type": "date"
-		},
-		{
-			"name": "reviewed",
-			"value": "",
-			"type": "datetime"
+			"name": "Date-Created",
+			"value": "{{date}}",
+			"type": "text"
 		},
 		{
 			"name": "tags",
-			"value": "podcasts, episode",
+			"value": "#My/WebClippings, #Source/Podcasts, #Source/Podcasts/Episode",
 			"type": "multitext"
 		},
 		{
-			"name": "show",
+			"name": "Reviewed",
+			"value": "",
+			"type": "text"
+		},
+		{
+			"name": "Show",
 			"value": "[[{{schema:@PodcastEpisode:partOfSeries.name|safe_name}}]]",
 			"type": "text"
 		},
 		{
-			"name": "title",
-			"value": "{{schema:@PodcastEpisode:name}}",
-			"type": "text"
-		},
-		{
-			"name": "published",
+			"name": "Published",
 			"value": "{{schema:@PodcastEpisode:datePublished|date:\\\"YYYY-MM-DD\\\"}}",
-			"type": "date"
+			"type": "text"
 		},
 		{
-			"name": "url",
+			"name": "URL",
 			"value": "{{schema:@PodcastEpisode:url}}",
-			"type": "text"
+			"type": "multitext"
 		},
 		{
 			"name": "url_apple",
@@ -55,12 +50,12 @@
 			"type": "text"
 		},
 		{
-			"name": "related",
+			"name": "Related",
 			"value": "[[podcast episodes]]",
-			"type": "multitext"
+			"type": "text"
 		},
 		{
-			"name": "guests",
+			"name": "Guests",
 			"value": "",
 			"type": "text"
 		},
@@ -70,7 +65,7 @@
 			"type": "text"
 		},
 		{
-			"name": "duration",
+			"name": "Duration",
 			"value": "{{schema:@PodcastEpisode:duration}}",
 			"type": "text"
 		}

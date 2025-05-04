@@ -2,21 +2,21 @@
 	"schemaVersion": "0.1.0",
 	"name": "Blinkist",
 	"behavior": "create",
-	"noteContentFormat": "\n{{\"Given the Blinkist information. Analyze and generate the following:\\n## AI Summary\\n\\nBriefly summarise each blink.\\n\\n## Key Takeaways\\n\\nList the key takeaways in the blinks.\"}}\n\n\n## Original Blinks\n{{content}}\n\n\n\n\n\n",
+	"noteContentFormat": "\n{{\"Given the Blinkist information. Analyze and generate the following:\\n## AI Summary\\n\\nBriefly summarise each blink.\\n\\n## Key Takeaways\\n\\nList the key takeaways in the blinks.\"}}\n\n## Original Blinks\n{{content}}\n\n\n\n\n",
 	"properties": [
 		{
 			"name": "Date-Created",
-			"value": "{{date:\\\"YYYY-MM-DD\\\"}}",
+			"value": "{{date}}",
 			"type": "text"
 		},
 		{
 			"name": "tags",
-			"value": "My/WebClippings, Source/Blinkist",
+			"value": "#My/WebClippings, #Source/Blinkist",
 			"type": "multitext"
 		},
 		{
 			"name": "Author",
-			"value": "{{author}}",
+			"value": "{{author}}, {{schema:author[*].name|wikilink|join}}",
 			"type": "text"
 		},
 		{

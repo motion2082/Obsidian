@@ -5,14 +5,19 @@
 	"noteContentFormat": "{{description}}",
 	"properties": [
 		{
-			"name": "category",
-			"value": "[[Products]]",
+			"name": "Date-Created",
+			"value": "{{date}}",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "#My/WebClippings, #Product",
 			"type": "multitext"
 		},
 		{
-			"name": "created",
-			"value": "{{date}}",
-			"type": "date"
+			"name": "Category",
+			"value": "[[Products]]",
+			"type": "text"
 		},
 		{
 			"name": "description",
@@ -20,22 +25,17 @@
 			"type": "text"
 		},
 		{
-			"name": "source",
+			"name": "Source",
 			"value": "{{url}}",
 			"type": "text"
 		},
 		{
-			"name": "title",
-			"value": "{{schema:@Product:name}}",
-			"type": "text"
-		},
-		{
-			"name": "price",
+			"name": "Price",
 			"value": "{{meta:property:product:price:amount}}",
 			"type": "number"
 		},
 		{
-			"name": "image",
+			"name": "Image",
 			"value": "{{image}}",
 			"type": "text"
 		}

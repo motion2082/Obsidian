@@ -5,44 +5,49 @@
 	"noteContentFormat": "",
 	"properties": [
 		{
-			"name": "category",
+			"name": "Date-Created",
+			"value": "{{date}}",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "My/WebClippings, #Places, #to-visit",
+			"type": "multitext"
+		},
+		{
+			"name": "Category",
 			"value": "[[Places]]",
-			"type": "multitext"
+			"type": "text"
 		},
 		{
-			"name": "type",
+			"name": "Type",
 			"value": "",
-			"type": "multitext"
+			"type": "text"
 		},
 		{
-			"name": "source",
+			"name": "Source",
 			"value": "{{url}}",
 			"type": "text"
 		},
 		{
-			"name": "loc",
-			"value": "",
-			"type": "multitext"
-		},
-		{
-			"name": "location",
+			"name": "Location",
 			"value": "{{url|split:\\\"/@\\\"|slice:1|split:\\\",\\\"|slice:0,2}}",
-			"type": "multitext"
+			"type": "text"
 		},
 		{
-			"name": "address",
+			"name": "Address",
 			"value": "{{selector:button[aria-label^=\\\"Address:\\\"]:aria-label|split:\\\"Address: \\\"|slice:1}}",
 			"type": "text"
 		},
 		{
-			"name": "url",
+			"name": "URL",
 			"value": "{{selector:div[aria-label^=\\\"Information for\\\"] a[href*=\\\"http\\\"]:href|slice:0,1}}",
-			"type": "text"
+			"type": "multitext"
 		},
 		{
-			"name": "rating",
+			"name": "Rating",
 			"value": "",
-			"type": "number"
+			"type": "multitext"
 		},
 		{
 			"name": "scoreGoogle",
@@ -50,24 +55,9 @@
 			"type": "number"
 		},
 		{
-			"name": "description",
+			"name": "Description",
 			"value": "{{selector:div[aria-label^=\\\"About \\\"] button .PYvSYb[jslog]}}",
 			"type": "text"
-		},
-		{
-			"name": "created",
-			"value": "{{date}}",
-			"type": "date"
-		},
-		{
-			"name": "last",
-			"value": "",
-			"type": "date"
-		},
-		{
-			"name": "tags",
-			"value": "places, to-visit",
-			"type": "multitext"
 		}
 	],
 	"triggers": [

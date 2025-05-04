@@ -6,7 +6,7 @@
 	"properties": [
 		{
 			"name": "Date-Created",
-			"value": "{{date:\\\"YYYY-MM-DD\\\"}}",
+			"value": "{{date}}",
 			"type": "text"
 		},
 		{

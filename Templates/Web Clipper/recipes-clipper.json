@@ -5,54 +5,49 @@
 	"noteContentFormat": "{{description}}\n\n## Ingredients\n\n{{schema:recipeIngredient|list:task}}\n\n## Instructions\n\n{{schema:recipeInstructions[*].text|list:task}}\n\n## Nutrition\n\n{{schema:@Recipe:nutrition|uncamel|capitalize|table|replace:(\"@type\":\"Nutrient\",\"Nutrition information\":\"Quantity\")}}",
 	"properties": [
 		{
+			"name": "Date-Created",
+			"value": "{{date}}",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "#My/WebClippings, #Recipes",
+			"type": "multitext"
+		},
+		{
 			"name": "category",
 			"value": "[[Recipe]]",
 			"type": "multitext"
 		},
 		{
-			"name": "author",
+			"name": "Author",
 			"value": "{{schema:author[*].name|wikilink|join}}",
-			"type": "multitext"
-		},
-		{
-			"name": "title",
-			"value": "{{title}}",
 			"type": "text"
 		},
 		{
-			"name": "image",
+			"name": "Image",
 			"value": "{{image}}",
 			"type": "text"
 		},
 		{
-			"name": "rating",
-			"value": "",
-			"type": "number"
-		},
-		{
-			"name": "cuisine",
-			"value": "{{schema:recipeCuisine}}",
+			"name": "Rating",
+			"value": "⭐⭐⭐⭐",
 			"type": "multitext"
 		},
 		{
-			"name": "url",
-			"value": "{{url}}",
+			"name": "Cuisine",
+			"value": "{{schema:recipeCuisine}}",
 			"type": "text"
 		},
 		{
-			"name": "created",
-			"value": "{{date}}",
-			"type": "date"
+			"name": "URL",
+			"value": "{{url}}",
+			"type": "multitext"
 		},
 		{
-			"name": "publisher",
+			"name": "Publisher",
 			"value": "{{schema:publisher.name|wikilink|join}}",
-			"type": "multitext"
-		},
-		{
-			"name": "tags",
-			"value": "recipes",
-			"type": "multitext"
+			"type": "text"
 		}
 	],
 	"triggers": [
