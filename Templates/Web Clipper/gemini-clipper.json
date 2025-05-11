@@ -7,7 +7,7 @@
 		{
 			"name": "Date-Created",
 			"value": "{{date}}",
-			"type": "text"
+			"type": "date"
 		},
 		{
 			"name": "tags",
@@ -16,8 +16,8 @@
 		},
 		{
 			"name": "URL",
-			"value": "{{url|split:\\\"?\\\"|first}}",
-			"type": "multitext"
+			"value": "{{url}}",
+			"type": "text"
 		},
 		{
 			"name": "Topics",

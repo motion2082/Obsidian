@@ -1,0 +1,36 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "ChatGPT",
+	"behavior": "create",
+	"noteContentFormat": "{{selectorHtml:article[data-testid*=\"conversation-turn\"]|replace:\"/<svg.*?svg>/g\":\"\"|join:\"\"|remove_html:(\".text-token-text-secondary,.text-token-text-tertiary\")|markdown|replace:(\"/\\s*###### ChatGPT said\\:\\s*/g\":\"\\n\\n[!ChatGPT-response]\\n\",\"/##### You said\\:\\s*/g\":\"[!ChatGPT-prompt]\\n\", \"/^(#{1,6} .*?) \\*\\*(.*)\\*\\*$/gm\":\"$1 $2\")|blockquote|replace:\"\\n> \\n> [!ChatGPT-\":\"\\n\\n> [!ChatGPT-\"}}",
+	"properties": [
+		{
+			"name": "Date-Created",
+			"value": "{{date}}",
+			"type": "date"
+		},
+		{
+			"name": "tags",
+			"value": "#My/WebClippings, #Source/AI/Chats",
+			"type": "multitext"
+		},
+		{
+			"name": "URL",
+			"value": "{{url}}",
+			"type": "text"
+		},
+		{
+			"name": "Topics",
+			"value": "{{\\\"topics in this article, separated by commas\\\"}}",
+			"type": "multitext"
+		}
+	],
+	"triggers": [
+		"https://chatgpt.com/share",
+		"https://chatgpt.com/c",
+		"https://chat.obsidianaitools.com/",
+		"https://share.ultimateai.org/"
+	],
+	"noteNameFormat": "{{selector:title|safe_name}} - ChatGPT",
+	"path": "04 VAULT/AI Chat"
+}

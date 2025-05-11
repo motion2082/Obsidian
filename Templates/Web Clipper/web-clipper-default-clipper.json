@@ -2,12 +2,12 @@
 	"schemaVersion": "0.1.0",
 	"name": "Web Clipper Default",
 	"behavior": "create",
-	"noteContentFormat": "{{content}}\n\n### List best points from this page\n{{\"list the best points from this page\"}}",
+	"noteContentFormat": "## My Highlights\n{{highlights|map: item => item.text|join:\"\\n\\n\"}}\n\n### List best points from this page\n{{\"list the best points from this page\"}}\n\n{{content}}\n\n",
 	"properties": [
 		{
 			"name": "Date-Created",
 			"value": "{{date}}",
-			"type": "text"
+			"type": "date"
 		},
 		{
 			"name": "tags",
@@ -17,12 +17,12 @@
 		{
 			"name": "Author",
 			"value": "{{author|split:\\\", \\\"|wikilink|join}}",
-			"type": "text"
+			"type": "multitext"
 		},
 		{
 			"name": "Source",
 			"value": "{{url}}",
-			"type": "text"
+			"type": "multitext"
 		},
 		{
 			"name": "Aliases",
@@ -37,7 +37,7 @@
 		{
 			"name": "Related",
 			"value": "",
-			"type": "text"
+			"type": "multitext"
 		}
 	],
 	"triggers": [],

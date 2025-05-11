@@ -2,12 +2,12 @@
 	"schemaVersion": "0.1.0",
 	"name": "YouTube",
 	"behavior": "create",
-	"noteContentFormat": "{{\"Given the YouTube video information and transcript. Analyze and generate the following:\\n## Summary\\n\\nBriefly summarise the video.\\n\\n## Key Takeaways\\n\\nList the key takeaways in the video.\"}}\n\n> [!quote] Summary\n> {{\"Briefly summarise the video.\"}}\n\n{{schema:@VideoObject:description|callout:(\"info\",\"Description\",true)}}\n\n##### Media Extended\n- [{{title}}]({{schema:@VideoObject:embedUrl}})\n\n## Timestamps\n{{\"add timestamp notes here, make sure timestamps have links back to YouTube\"}}\n\n`BUTTON[play]`  `BUTTON[timestamp]`  `BUTTON[snap]`\n\n`BUTTON[bck10]` `BUTTON[fwd30]` \n\n```meta-bind-embed\n[[Metabind Extended Media Player Buttons]]\n```\n\n---\n\n## Best Ideas\n{{\"list the best ideas from the video\"}}\n\n---\n\n## Tools\n{{\"list any tools from the video that could be applied in real life scenarios\"}}\n\n---\n## Reflection\n{{\"what are the key learning points of this video?\"}}\n\n---\n\n## Key Message\n{{\"what is the key message of this video?\"}}",
+	"noteContentFormat": "{{\"Given the YouTube video information and transcript. Analyze and generate the following:\\n## Brief Summary\\n\\nBriefly summarise the video.\\n\\n## Key Takeaways\\n\\nList the key takeaways in the video.\"}}\n\n> [!quote] Summary\n> {{\"Briefly summarise the video.\"}}\n\n{{schema:@VideoObject:description|callout:(\"info\",\"Description\",true)}}\n\n##### Media Extended\n- [{{title}}]({{schema:@VideoObject:embedUrl}})\n\n## Timestamps\n{{\"add timestamp notes here, make sure timestamps have wikilinks back to YouTube\"}}\n\n```meta-bind-embed\n[[Metabind Extended Media Player Buttons]]\n```\n\n---\n\n## Best Ideas\n{{\"list the best ideas from the video\"}}\n\n---\n\n## Tools\n{{\"list any tools from the video that could be applied in real life scenarios\"}}\n\n---\n## Reflection\n{{\"what are the key learning points of this video?\"}}\n\n---\n\n## Key Message\n{{\"what is the key message of this video?\"}}",
 	"properties": [
 		{
 			"name": "Date-Added",
 			"value": "{{date}}",
-			"type": "text"
+			"type": "date"
 		},
 		{
 			"name": "tags",
@@ -17,12 +17,12 @@
 		{
 			"name": "Status",
 			"value": "In Progress",
-			"type": "text"
+			"type": "multitext"
 		},
 		{
 			"name": "Source",
 			"value": "YouTube, Source/YouTube",
-			"type": "text"
+			"type": "multitext"
 		},
 		{
 			"name": "Creator",
@@ -42,7 +42,7 @@
 		{
 			"name": "Related",
 			"value": "[[YouTube]]",
-			"type": "text"
+			"type": "multitext"
 		},
 		{
 			"name": "Published",
@@ -67,7 +67,7 @@
 		{
 			"name": "aliases",
 			"value": "{{schema:@VideoObject:name}}",
-			"type": "text"
+			"type": "aliases"
 		}
 	],
 	"triggers": [

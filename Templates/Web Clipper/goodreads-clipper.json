@@ -2,17 +2,17 @@
 	"schemaVersion": "0.1.0",
 	"name": "Goodreads",
 	"behavior": "create",
-	"noteContentFormat": "{{selector:.BookPageMetadataSection__description}}",
+	"noteContentFormat": "\n>[!info]- Meta Details\n> Date: [[<% tp.date.now(\"DD-MM-YY\") %>]]\n> Week: [[<% tp.date.now(\"gggg-[W]ww\") %>]]\n> Month: [[<% tp.date.now(\"MMMM YYYY\") %>]]\n> Quarter: [[Q<% tp.date.now(\"Q\") %> - <% tp.date.now(\"YYYY\") %>]]\n> Year: [[<% tp.date.now(\"YYYY\") %>]]\n\n## Summary / Notes:\n{{\"give me the key points from the description\"}}\n\n{{meta:name:description|callout:(\"info\",\"Goodreads Description\",false)}}\n\n## Best Ideas\n1. \n\n## Tools\n1. \n\n## Reflection\n\n### The key message in this book:\n{{\"what is the key message from {{title}} \"}}\n\n### Actionable advice:\n\n## Highlights from Kindle\n\n>[!quote]+ \n>\n\n\n\n",
 	"properties": [
 		{
 			"name": "Date-Created",
 			"value": "{{date}}",
-			"type": "text"
+			"type": "date"
 		},
 		{
-			"name": "Date-Completed: ",
+			"name": "Date-Completed",
 			"value": "",
-			"type": "text"
+			"type": "date"
 		},
 		{
 			"name": "tags",
@@ -32,12 +32,12 @@
 		{
 			"name": "Author",
 			"value": "{{schema:author[*].name|wikilink|join}}",
-			"type": "text"
+			"type": "multitext"
 		},
 		{
 			"name": "URL",
 			"value": "{{url}}",
-			"type": "multitext"
+			"type": "text"
 		},
 		{
 			"name": "Rating",
@@ -56,23 +56,23 @@
 		},
 		{
 			"name": "Cover",
-			"value": "{{schema:image}}",
+			"value": "{{schema:@Book:image}}",
 			"type": "text"
 		},
 		{
 			"name": "Status",
 			"value": "In-Progress",
-			"type": "text"
+			"type": "multitext"
 		},
 		{
 			"name": "Genre",
-			"value": "{{selector:.BookPageMetadataSection__genres .BookPageMetadataSection__genreButton|wikilink}}",
+			"value": "{{\\\"genres in this article, separated by commas\\\"}}",
 			"type": "text"
 		},
 		{
 			"name": "Length",
 			"value": "{{schema:numberOfPages}}",
-			"type": "text"
+			"type": "number"
 		},
 		{
 			"name": "Year",
