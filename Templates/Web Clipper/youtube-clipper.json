@@ -2,12 +2,12 @@
 	"schemaVersion": "0.1.0",
 	"name": "YouTube",
 	"behavior": "create",
-	"noteContentFormat": "{{\"Given the YouTube video information and transcript. Analyze and generate the following:\\n## Brief Summary\\n\\nBriefly summarise the video.\\n\\n## Key Takeaways\\n\\nList the key takeaways in the video.\"}}\n\n> [!quote] Summary\n> {{\"Briefly summarise the video.\"}}\n\n{{schema:@VideoObject:description|callout:(\"info\",\"Description\",true)}}\n\n##### Media Extended\n- [{{title}}]({{schema:@VideoObject:embedUrl}})\n\n## Timestamps\n{{\"add timestamp notes here, make sure timestamps have wikilinks back to YouTube\"}}\n\n```meta-bind-embed\n[[Metabind Extended Media Player Buttons]]\n```\n\n---\n\n## Best Ideas\n{{\"list the best ideas from the video\"}}\n\n---\n\n## Tools\n{{\"list any tools from the video that could be applied in real life scenarios\"}}\n\n---\n## Reflection\n{{\"what are the key learning points of this video?\"}}\n\n---\n\n## Key Message\n{{\"what is the key message of this video?\"}}",
+	"noteContentFormat": "{{\"Given the YouTube video information and transcript. Analyze and generate the following:\\n## Brief Summary\\n\\nBriefly summarise the video.\\n\\n## Key Takeaways\\n\\nList the key takeaways in the video.\"}}\n\n> [!quote] Summary\n> {{\"Briefly summarise the video.\"}}\n\n{{schema:@VideoObject:description|callout:(\"info\", \"Description\", \"true\")}}\n\n##### Media Extended\n{{schema:@VideoObject:embedUrl}}\n\n## Timestamp Notes\n{{\"add timestamp notes here, make sure timestamps have Obsidian wikilinks back to YouTube\"}}\n\n```meta-bind-embed\n[[Metabind Extended Media Player Buttons]]\n```\n\n## Best Ideas\n{{\"list the best ideas from the video\"}}\n\n## Tools \n{{\"list any tools from the video that could be applied in real life scenarios\"}}\n\n---\n\n## Reflection\n{{\"what are the key learning points of this video?\"}}\n- \n  \n---\n\n## Key Message\n{{\"what is the key message of this video?\"}}\n",
 	"properties": [
 		{
 			"name": "Date-Added",
 			"value": "{{date}}",
-			"type": "date"
+			"type": "text"
 		},
 		{
 			"name": "tags",
@@ -17,16 +17,16 @@
 		{
 			"name": "Status",
 			"value": "In Progress",
-			"type": "multitext"
+			"type": "text"
 		},
 		{
 			"name": "Source",
 			"value": "YouTube, Source/YouTube",
-			"type": "multitext"
+			"type": "text"
 		},
 		{
 			"name": "Creator",
-			"value": "{{schema:author|wikilink}}",
+			"value": "{{schema:@VideoObject:author|wikilink}}",
 			"type": "text"
 		},
 		{
@@ -36,44 +36,29 @@
 		},
 		{
 			"name": "Video-URL",
-			"value": "{{schema:@VideoObject:embedUrl|replace:\\\"embed/\\\":\\\"watch?v=\\\"}}",
-			"type": "text"
-		},
-		{
-			"name": "Related",
-			"value": "[[YouTube]]",
-			"type": "multitext"
-		},
-		{
-			"name": "Published",
-			"value": "{{schema:@VideoObject:uploadDate|date:\\\"YYYY-MM-DD\\\"}}",
-			"type": "text"
-		},
-		{
-			"name": "Duration",
-			"value": "{{schema:@VideoObject:duration|replace:\\\"PT\\\",\\\"\\\",\\\"S\\\",\\\"\\\"}}",
+			"value": "{{schema:@VideoObject:embedUrl}}",
 			"type": "text"
 		},
 		{
 			"name": "Rating",
 			"value": "⭐⭐⭐⭐",
-			"type": "multitext"
+			"type": "text"
 		},
 		{
 			"name": "Topics",
 			"value": "{{\\\"topics in this article, separated by commas\\\"}}",
-			"type": "multitext"
+			"type": "text"
 		},
 		{
 			"name": "aliases",
 			"value": "{{schema:@VideoObject:name}}",
-			"type": "aliases"
+			"type": "text"
 		}
 	],
 	"triggers": [
 		"https://www.youtube.com/watch"
 	],
-	"noteNameFormat": "📽️{{schema:@VideoObject:name|safe_name|trim}} - {{schema:@VideoObject:author}}",
+	"noteNameFormat": "{{schema:@VideoObject:name|trim}} - {{schema:@VideoObject:author}}",
 	"path": "04 VAULT/YouTube",
-	"context": "# {{schema:@VideoObject:name}}\n\n{{schema:@VideoObject:description}}\n\n## Basic Information\n\n- Link: {{schema:@VideoObject:@id}}\n- Channel: {{schema:@VideoObject:author}}\n\n## Transcript\n\n{{selectorHtml:ytd-transcript-segment-renderer .segment-timestamp, ytd-transcript-segment-renderer yt-formatted-string|join:\"\\n\"|markdown}}"
+	"context": "# {{schema:@VideoObject:name}}\n\n{{schema:@VideoObject:description}}\n\n## Basic Information\n\n- Link: {{schema:@VideoObject:@id}}\n- Channel: {{schema:@VideoObject:author}}\n\n{{selectorHtml:ytd-transcript-segment-renderer .segment-timestamp, ytd-transcript-segment-renderer yt-formatted-string|join:\"\\n\"|markdown}}"
 }

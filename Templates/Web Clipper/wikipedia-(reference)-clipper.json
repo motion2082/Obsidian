@@ -1,0 +1,48 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "Wikipedia (Reference)",
+	"behavior": "create",
+	"noteContentFormat": "# {{selector:.firstHeading}}\n---\n\n![Image]({{image}})\n\n{{selectorHtml:#mw-content-text|remove_html:(\"style, img, .noprint, .printfooter, .infobox, .mw-editsection, .mw-default-size, .navbox, .navbox-styles, .thumbinner, .mw-empty-elt, .hatnote, .metadata\")|markdown}}",
+	"properties": [
+		{
+			"name": "Date-Published",
+			"value": "{{published|date:\\\"YYYY-MM-DD\\\"}}",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "clippings, wikipedia",
+			"type": "multitext"
+		},
+		{
+			"name": "cssclasses",
+			"value": "",
+			"type": "multitext"
+		},
+		{
+			"name": "URL",
+			"value": "{{url}}",
+			"type": "text"
+		},
+		{
+			"name": "Author",
+			"value": "{{author}}",
+			"type": "multitext"
+		},
+		{
+			"name": "Category",
+			"value": "[[Wikipedia]]",
+			"type": "text"
+		},
+		{
+			"name": "Date-Created",
+			"value": "{{date:}}",
+			"type": "date"
+		}
+	],
+	"triggers": [
+		"/^https:\\/\\/(\\w+)\\.wikipedia\\.org\\/wiki\\/.*$/"
+	],
+	"noteNameFormat": "{{date|date:\"YYYY-MM-DD\"}}- Wikipedia - {{selector:.firstHeading|kebab}}",
+	"path": "04 VAULT/Web Clippings"
+}

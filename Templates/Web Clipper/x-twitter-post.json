@@ -1,0 +1,48 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "X (Twitter) Post",
+	"behavior": "create",
+	"noteContentFormat": "## Original Post\n\n>[!quote] {{content|split:\"\\n\\n\"|first}}\n{{selectorHtml:article[tabindex=\"-1\"] div[data-testid=\"tweetText\"]|first|strip_tags:\"a, img\"|strip_attr:\"href, alt, style, draggable\"|replace:\"\\n\":\"<br>\"|replace:\"<img alt=\\\"\",\"\"|replace:\"\\\" draggable=\\\"false\\\">\":\"\"|markdown|blockquote}}\n>\n{{selectorHtml:article[tabindex=\"-1\"] video, article[tabindex=\"-1\"] img[draggable=\"true\"]:not(img[src*=\"profile_images\"])|join:\"<br>\"|strip_attr:\"poster, src\"|replace:(\"<video poster=\":\"<img src=\",\"</video>\":\"\")|replace:\"/&amp;name=([^\\\"]+)/g\":\"&amp;name=large\"|markdown|blockquote}}\n\n## Replies\n\n{{content|split:\"---\"|slice:1|map:item => \"> [!quote]${item}\"|template:\"${str}\"|replace:\"> [!quote]\\n\":\"> [!quote] \"}}",
+	"properties": [
+		{
+			"name": "source",
+			"value": "{{url}}",
+			"type": "text"
+		},
+		{
+			"name": "author",
+			"value": "{{selector:div[data-testid=\\\"User-Name\\\"]|first|split:\\\"@\\\"|first}}",
+			"type": "multitext"
+		},
+		{
+			"name": "handle",
+			"value": "{{url|split:\\\"/\\\"|slice:3,-2}}",
+			"type": "text"
+		},
+		{
+			"name": "published",
+			"value": "{{selectorHtml:article[tabindex=\\\"-1\\\"] time?datetime}}",
+			"type": "date"
+		},
+		{
+			"name": "created",
+			"value": "{{date}}",
+			"type": "date"
+		},
+		{
+			"name": "image",
+			"value": "{{selectorHtml:article[tabindex=\\\"-1\\\"] video, article[tabindex=\\\"-1\\\"] img[draggable=\\\"true\\\"]:not(img[src*=\\\"profile_images\\\"])|first|strip_attr:\\\"poster, src\\\"|replace:(\\\"<video poster=\\\":\\\"<img src=\\\",\\\"</video>\\\":\\\"\\\")|markdown|slice:4,-1}}",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "tweet",
+			"type": "multitext"
+		}
+	],
+	"triggers": [
+		"/^https:\\/\\/x\\.com\\/[A-Za-z0-9_]+\\/status\\/\\d+$/"
+	],
+	"noteNameFormat": "@{{url|split:\"/\"|slice:3,-2}} {{selectorHtml:article[tabindex=\"-1\"] time?datetime|first|date:\"YYYY-MM-DD_HHmmss\"}}",
+	"path": "Clippings"
+}
