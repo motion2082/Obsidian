@@ -1,0 +1,118 @@
+version: '3.8'
+
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      # Core Configuration
+      - N8N_HOST=n8n.yourdomain.com
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      
+      # Public URLs
+      - N8N_PUBLIC_URL=https://n8n.yourdomain.com
+      - WEBHOOK_URL=https://n8n.yourdomain.com
+      
+      # Proxy Configuration
+      - N8N_TRUST_PROXY=true
+      
+      # Database Configuration (FIXED DEPRECATIONS)
+      - N8N_DB_TYPE=sqlite
+      - DB_SQLITE_POOL_SIZE=3
+      
+      # Performance & Runners (FIXED DEPRECATIONS)
+      - N8N_RUNNERS_ENABLED=true
+      - EXECUTIONS_TIMEOUT=3600
+      - EXECUTIONS_TIMEOUT_MAX=7200
+      # REMOVED: EXECUTIONS_PROCESS (deprecated)
+      
+      # Security (FIXED DEPRECATIONS) CHANGE ENCRYPTION CODE TO UNIQUE CODE
+      - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
+      - N8N_SECURE_COOKIE=true
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_ENCRYPTION_KEY=K8mP2vR9sL4xN7eQ1wT6yU3iO0pA5zC8
+      
+      # Environment
+      - NODE_ENV=production
+      - TZ=Australia/Adelaide
+      
+      # Logging
+      - N8N_LOG_LEVEL=info
+      - N8N_RELEASE_TYPE=stable
+      
+      # Email Configuration (Optional - uncomment and configure if needed)
+      # - N8N_EMAIL_MODE=smtp
+      # - N8N_SMTP_HOST=smtp.gmail.com
+      # - N8N_SMTP_PORT=587
+      # - N8N_SMTP_USER=${SMTP_USER}
+      # - N8N_SMTP_PASS=${SMTP_PASS}
+      # - N8N_SMTP_SENDER=${SMTP_USER}
+      
+      # User Management (Optional)
+      # - N8N_USER_MANAGEMENT_DISABLED=false
+      # - N8N_USER_MANAGEMENT_JWT_SECRET=${JWT_SECRET}
+      
+      # Metrics & Monitoring (Optional)
+      # - N8N_METRICS=true
+      # - N8N_DIAGNOSTICS_ENABLED=false
+
+    volumes:
+      - n8n_data:/home/node/.n8n
+    
+    networks:
+      - n8n_network
+    
+    # Health check
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:5678/healthz || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+        reservations:
+          memory: 512M
+          cpus: '0.25'
+
+  # Optional: Backup service (uncomment if you want automated backups)
+  # n8n-backup:
+  #   image: alpine:latest
+  #   container_name: n8n_backup
+  #   restart: unless-stopped
+  #   volumes:
+  #     - n8n_data:/data:ro
+  #     - ./backups:/backups
+  #   environment:
+  #     - TZ=Australia/Adelaide
+  #   command: >
+  #     sh -c "
+  #       apk add --no-cache tzdata &&
+  #       while true; do
+  #         echo 'Creating backup...' &&
+  #         tar czf /backups/n8n-backup-$$(date +%Y%m%d-%H%M%S).tar.gz -C /data . &&
+  #         find /backups -name '*.tar.gz' -mtime +7 -delete &&
+  #         echo 'Backup completed. Next backup in 24 hours.' &&
+  #         sleep 86400
+  #       done
+  #     "
+  #   networks:
+  #     - n8n_network
+
+volumes:
+  n8n_data:
+    driver: local
+
+networks:
+  n8n_network:
+    driver: bridge
+    name: n8n_network

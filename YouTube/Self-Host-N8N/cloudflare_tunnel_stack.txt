@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  cloudflare-tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflare-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token YOURCLOUDFLARETUNNELTOKENHERE
+    
+    # Optional: Environment variables for additional configuration
+    environment:
+      - TUNNEL_METRICS=0.0.0.0:2000
+    
+    # Optional: Expose metrics port
+    ports:
+      - "2000:2000"
+    
+    networks:
+      - cloudflare_network
+    
+    # No health check needed - tunnel logs show status
+    # healthcheck:
+    #   test: ["CMD-SHELL", "wget -q --spider http://localhost:2000/metrics || exit 1"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+    #   start_period: 30s
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+          cpus: '0.1'
+        reservations:
+          memory: 64M
+
+networks:
+  cloudflare_network:
+    driver: bridge
