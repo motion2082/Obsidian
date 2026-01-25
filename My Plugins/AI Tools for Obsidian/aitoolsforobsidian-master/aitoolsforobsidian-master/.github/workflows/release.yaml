@@ -1,0 +1,96 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch: # Allows manual triggering from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    name: Validate version
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.validate.outputs.version }}
+      tag_name: ${{ steps.validate.outputs.tag_name }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate tag matches manifest version
+        id: validate
+        run: |
+          # Get tag from ref, or default to manifest version if manually triggered
+          manifest_version=$(grep -o '"version": *"[^"]*"' manifest.json | sed 's/.*: *"\([^"]*\)"/\1/')
+          
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            tag="${GITHUB_REF#refs/tags/}"
+          else
+            tag="v$manifest_version"
+          fi
+
+          if [ "$tag" != "v$manifest_version" ]; then
+            echo "Tag '$tag' does not match manifest version 'v$manifest_version'"
+            exit 1
+          fi
+
+          echo "version=$manifest_version" >> "$GITHUB_OUTPUT"
+          echo "tag_name=$tag" >> "$GITHUB_OUTPUT"
+          echo "Validated: version '$manifest_version' using tag '$tag'"
+
+  build:
+    name: Build and release
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.x"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npx eslint src/
+
+      - name: Build
+        run: npm run build
+
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ needs.validate.outputs.tag_name }}
+        run: |
+          # Create release notes from commits since last tag
+          previous_tag=$(git describe --tags --abbrev=0 HEAD~1 2>/dev/null || echo "")
+          if [ -n "$previous_tag" ]; then
+            changelog=$(git log "$previous_tag"..HEAD --pretty=format:"- %s" 2>/dev/null | head -20)
+          else
+            changelog=$(git log --pretty=format:"- %s" | head -20)
+          fi
+
+          cat <<EOF > /tmp/release-notes.md
+          ## Changes
+          $changelog
+
+          ## Files
+          - main.js
+          - manifest.json
+          - styles.css
+          EOF
+
+          # Create release (use --overwrite if you want to update existing releases)
+          gh release create "$TAG" \
+            --title="$TAG" \
+            --notes-file /tmp/release-notes.md \
+            main.js manifest.json styles.css
+          
+          echo "Release '$TAG' created successfully"

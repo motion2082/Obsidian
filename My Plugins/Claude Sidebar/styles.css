@@ -1,0 +1,55 @@
+.workspace-leaf-content[data-type="vault-terminal"] .view-content {
+	overflow: clip;
+	display: flex;
+	flex-direction: column;
+}
+
+.vault-terminal {
+	height: 100%;
+	min-height: 0;
+	display: flex;
+	flex-direction: column;
+	padding: 8px 12px;
+	padding-bottom: calc(8px + var(--status-bar-height, 0px) + env(safe-area-inset-bottom, 0px));
+	box-sizing: border-box;
+	background-color: var(--background-secondary);
+	overflow: hidden;
+}
+
+.vault-terminal-host {
+	flex: 1;
+	min-height: 0;
+	overflow: hidden;
+	position: relative;
+	background-color: var(--background-secondary);
+	overscroll-behavior: contain;
+}
+
+.vault-terminal-host .xterm {
+	height: 100%;
+	/* DO NOT add padding here - it breaks xterm canvas character positioning */
+	background-color: var(--background-secondary) !important;
+}
+
+.vault-terminal-host .xterm .xterm-screen {
+	background-color: var(--background-secondary) !important;
+}
+
+.vault-terminal-host .xterm-viewport {
+	overflow-y: auto !important;
+	background-color: var(--background-secondary) !important;
+	overscroll-behavior: contain;
+	scrollbar-gutter: stable;
+}
+
+/* Keep the hidden textarea from stealing layout/focus scroll */
+.vault-terminal-host .xterm .xterm-helper-textarea {
+	position: fixed !important;
+	left: -10000px !important;
+	top: 0 !important;
+	width: 0 !important;
+	height: 0 !important;
+	opacity: 0 !important;
+	overflow: hidden !important;
+	clip: rect(0 0 0 0) !important;
+}
