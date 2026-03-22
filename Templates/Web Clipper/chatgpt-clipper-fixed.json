@@ -1,0 +1,37 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "ChatGPT",
+	"behavior": "create",
+	"noteContentFormat": "\n>[!info]- Meta Details\n> Date: [[<% tp.date.now(\"DD-MM-YY\") %>]]\n> Week: [[<% tp.date.now(\"gggg-[W]ww\") %>]]\n> Month: [[<% tp.date.now(\"MMMM YYYY\") %>]]\n> Quarter: [[Q<% tp.date.now(\"Q\") %> - <% tp.date.now(\"YYYY\") %>]]\n> Year: [[<% tp.date.now(\"YYYY\") %>]]\n\n{{selectorHtml:section[data-testid*=\"conversation-turn\"]|join:\"LINEBREAKPLACEHOLDER\"|replace:\"/<svg[^>]*>.*?<\\/svg>/gs\":\"\"|remove_html:(\".text-token-text-secondary,.text-token-text-tertiary\")|markdown|replace:\"#### You said:\\n\":\"[!ChatGPT-prompt]\"|replace:\"#### ChatGPT said:\\n\":\"[!ChatGPT]\"|blockquote|replace:\"> \\n> LINEBREAKPLACEHOLDER\\n> \":\"\"}}",
+	"properties": [
+		{
+			"name": "Date-Created",
+			"value": "{{date}}",
+			"type": "date"
+		},
+		{
+			"name": "tags",
+			"value": "#My/WebClippings, #Source/AI/Chats",
+			"type": "multitext"
+		},
+		{
+			"name": "URL",
+			"value": "{{url}}",
+			"type": "text"
+		},
+		{
+			"name": "Topics",
+			"value": "{{\\\"topics in this article, separated by commas\\\"}}",
+			"type": "multitext"
+		}
+	],
+	"triggers": [
+		"https://chatgpt.com/share",
+		"https://chatgpt.com/c",
+		"https://chat.obsidianaitools.com/",
+		"https://share.ultimateai.org/"
+	],
+	"noteNameFormat": "{{selector:title|safe_name}} - ChatGPT",
+	"path": "04 VAULT/AI/ChatGPT",
+	"context": "<%* await app.commands.executeCommandById(\"post-webhook:post-webhook-note-da2e8064-7850-4e27-997a-92776ed6f335]\") %>"
+}
