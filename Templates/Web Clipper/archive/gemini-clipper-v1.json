@@ -1,0 +1,33 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "Gemini",
+	"behavior": "create",
+	"noteContentFormat": "\n> [!info] model: {{selector: bard-mode-switcher | markdown}}\n{{selectorHtml:*:is(user-query, model-response) | join:\"\" | replace:(\"<bard-avatar \":\"★Gemini said<bard-avatar \" , \"<user-query \":\"★You said<user-query \") | markdown | blockquote | replace:(\"> \\n> ★Gemini said\":\"\\n> [!ai-response] Gemini said\" , \"> ★You said\":\"\\n> [!ai-prompt] You said\") }}",
+	"properties": [
+		{
+			"name": "Date-Created",
+			"value": "{{date}}",
+			"type": "date"
+		},
+		{
+			"name": "tags",
+			"value": "#My/WebClippings, #Source/AI/Gemini",
+			"type": "multitext"
+		},
+		{
+			"name": "URL",
+			"value": "{{url}}",
+			"type": "text"
+		},
+		{
+			"name": "Topics",
+			"value": "{{\\\"topics in this article, separated by commas\\\"}}",
+			"type": "multitext"
+		}
+	],
+	"triggers": [
+		"https://gemini.google.com/app"
+	],
+	"noteNameFormat": "{{title|safe_name}} - {{site|safe_name}}",
+	"path": "04 VAULT/AI Chat"
+}

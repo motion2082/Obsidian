@@ -2,7 +2,7 @@
 	"schemaVersion": "0.1.0",
 	"name": "Gemini",
 	"behavior": "create",
-	"noteContentFormat": "\n> [!info] model: {{selector: bard-mode-switcher | markdown}}\n{{selectorHtml:*:is(user-query, model-response) | join:\"\" | replace:(\"<bard-avatar \":\"★Gemini said<bard-avatar \" , \"<user-query \":\"★You said<user-query \") | markdown | blockquote | replace:(\"> \\n> ★Gemini said\":\"\\n> [!ai-response] Gemini said\" , \"> ★You said\":\"\\n> [!ai-prompt] You said\") }}",
+	"noteContentFormat": "\n>[!info]- Meta Details\n> Date: [[<% tp.date.now(\"DD-MM-YY\") %>]]\n> Week: [[<% tp.date.now(\"gggg-[W]ww\") %>]]\n> Month: [[<% tp.date.now(\"MMMM YYYY\") %>]]\n> Quarter: [[Q<% tp.date.now(\"Q\") %> - <% tp.date.now(\"YYYY\") %>]]\n> Year: [[<% tp.date.now(\"YYYY\") %>]]\n\n> [!info] model: {{selector: bard-mode-switcher | markdown}}\n{{selectorHtml:*:is(user-query, model-response) | join:\"\" | replace:(\"<user-query\":\"★YOU★<user-query\" , \"<model-response\":\"★GEM★<model-response\") | markdown | blockquote | replace:(\"★YOU★\":\"\\n\\n> [!ai-prompt] You said\\n>\" , \"★GEM★\":\"\\n\\n> [!ai-response] Gemini said\\n>\") }}",
 	"properties": [
 		{
 			"name": "Date-Created",
@@ -29,5 +29,5 @@
 		"https://gemini.google.com/app"
 	],
 	"noteNameFormat": "{{title|safe_name}} - {{site|safe_name}}",
-	"path": "04 VAULT/AI Chat"
+	"path": "04 VAULT/AI/Gemini"
 }
